@@ -5,7 +5,7 @@ Calcularea Kcaloriilor, Macronutrientilor si Micronutrientilor consumate intr-o 
 ### Tema 0
 
 - [x] Nume proiect (poate fi schimbat ulterior)
-- [ ] Scurtă descriere a temei alese, ce v-ați propus să implementați
+- [x] Scurtă descriere a temei alese, ce v-ați propus să implementați
 
 ## Tema 1
 
