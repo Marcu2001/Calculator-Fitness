@@ -1,4 +1,6 @@
-# OOP Template
+# Calculator Fitness
+
+Calcularea Kcaloriilor, Macronutrientilor si Micronutrientilor consumate intr-o zi.
 
 ### Tema 0
 
