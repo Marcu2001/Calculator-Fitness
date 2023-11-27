@@ -1,4 +1,6 @@
-2
-Piept_de_pui 20 1 2 10 30
-Banana 3 40 0 10 2
-100 200
+4
+Ou 12 1 10 8 8
+Fulgi_de_Ovaz 12 62 6 5 6
+Migdale_Crude 25 5 53 7 9
+Piept_de_Pui 31 0 4 3 2
+100 75 50 150

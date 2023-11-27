@@ -83,17 +83,17 @@ class Meniu
     Aliment aliment;
     int gramaj;
 public:
-    Meniu(Aliment aliment, int gramaj) : aliment(aliment), gramaj(gramaj) {}
-    int get_gramaj(){return gramaj;}
+    Meniu(Aliment const &aliment, int gramaj) : aliment(aliment), gramaj(gramaj) {}
+    int get_gramaj () const{return gramaj;}
     Aliment get_aliment(){return aliment;}
     friend std::ostream& operator<<(std::ostream &out, const Meniu& other)
     {
         out << "Aliment: " << other.aliment.get_denumire() << "\n";
         out << "Gramaj: " << other.gramaj << "g" << "\n";
         out << "Kcal: " << other.aliment.get_Kcal() << "\n";
-        out << "Proteine: " << other.aliment.get_macronutrient().get_proteina() * ( other.gramaj / 100) << "g" << "\n";
-        out << "Carbohidrati: " << other.aliment.get_macronutrient().get_carbohidrat() * ( other.gramaj / 100) << "g" << "\n";
-        out << "Grasimi: " << other.aliment.get_macronutrient().get_grasime() * ( other.gramaj / 100) << "g" << "\n";
+        out << "Proteine: " << other.aliment.get_macronutrient().get_proteina() * ( other.gramaj * 0.01) << "g" << "\n";
+        out << "Carbohidrati: " << other.aliment.get_macronutrient().get_carbohidrat() * ( other.gramaj * 0.01) << "g" << "\n";
+        out << "Grasimi: " << other.aliment.get_macronutrient().get_grasime() * ( other.gramaj * 0.01) << "g" << "\n";
         out << "Vitamine: " << other.aliment.get_micronutrient().get_vitamine() << "\n";
         out << "Minerale: " << other.aliment.get_micronutrient().get_minerale() << "\n";
 
@@ -139,10 +139,10 @@ int main() {
         for (int i = 0; i < x; i++)
         {
             std::cout << Meniu[i] << "\n";
-            total_proteine += Meniu[i].get_aliment().get_macronutrient().get_proteina() * (Meniu[i].get_gramaj() / 100);
-            total_grasimi += Meniu[i].get_aliment().get_macronutrient().get_grasime() * (Meniu[i].get_gramaj() / 100);
-            total_carbohidrati += Meniu[i].get_aliment().get_macronutrient().get_carbohidrat() * (Meniu[i].get_gramaj() / 100);
-            total_kcal += Meniu[i].get_aliment().get_Kcal() * (Meniu[i].get_gramaj() / 100);
+            total_proteine += Meniu[i].get_aliment().get_macronutrient().get_proteina() * (Meniu[i].get_gramaj() * 0.01);
+            total_grasimi += Meniu[i].get_aliment().get_macronutrient().get_grasime() * (Meniu[i].get_gramaj() * 0.01);
+            total_carbohidrati += Meniu[i].get_aliment().get_macronutrient().get_carbohidrat() * (Meniu[i].get_gramaj() * 0.01);
+            total_kcal += Meniu[i].get_aliment().get_Kcal() * (Meniu[i].get_gramaj() *0.01);
         }
         std::cout << "Total Proteine: " << total_proteine << "g" << "\n";
         std::cout << "Total Carbohidrati: " << total_carbohidrati << "g" << "\n";
