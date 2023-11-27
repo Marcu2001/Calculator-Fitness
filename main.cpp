@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <cstring>
 
 class Micronutrient
 {
@@ -101,33 +100,19 @@ public:
         return out;
     }
 
-
-
 };
 
 
 int main() {
-    Micronutrient micronutrient1(4, 5);
-    Macronutrient macronutrient1(20, 2, 1);
-    Aliment aliment1("Piept de pui", macronutrient1, micronutrient1);
-//    std::cout << meniu1;
-//    std::cout << "\n";
-    Micronutrient micronutrient2(10, 3);
-    Macronutrient macronutrient2(4, 20, 1);
-    Aliment aliment2("Portocala", macronutrient2, micronutrient2);
-    //Meniu meniu2(aliment2, 300);
-    //std::cout << meniu2;
-
     std::vector<Meniu> Meniu;
     std::vector<Aliment> DATABASE;
-
     std::ifstream fin("Tastatura.txt");
-
     //std::cout << "Cate alimente vreau sa introduc in meniu?" << "\n";
     int x;
     fin >> x;
     for (int i = 0; i < x; i++) {
-        std::string denumire{"Aliment_"};
+        std::string denumire;
+        fin >> denumire;
         int proteine;
         fin >> proteine;
         int carbohidrati;
@@ -150,63 +135,19 @@ int main() {
     int total_proteine = 0;
     int total_carbohidrati = 0;
     int total_grasimi = 0;
+    int total_kcal = 0;
         for (int i = 0; i < x; i++)
         {
-            //std::cout << Meniu[i] << "\n";
+            std::cout << Meniu[i] << "\n";
             total_proteine += Meniu[i].get_aliment().get_macronutrient().get_proteina() * (Meniu[i].get_gramaj() / 100);
             total_grasimi += Meniu[i].get_aliment().get_macronutrient().get_grasime() * (Meniu[i].get_gramaj() / 100);
             total_carbohidrati += Meniu[i].get_aliment().get_macronutrient().get_carbohidrat() * (Meniu[i].get_gramaj() / 100);
+            total_kcal += Meniu[i].get_aliment().get_Kcal() * (Meniu[i].get_gramaj() / 100);
         }
-        std::cout << total_proteine << "\n";
-        std::cout << total_carbohidrati << "\n";
-        std::cout << total_grasimi << "\n";
-
-
-
-
-
-//    for(int i = 0; i < 2; i++)
-//    {
-//        Meniu.push_back({aliment1, 200});
-//        Meniu.push_back({aliment2, 400});
-//    }
-//
-//    for(int i = 0; i < 2; i++)
-//        std::cout << Meniu[i] << "\n" << "\n";
-
-
-
-//    Macronutrient macronutrient1(22, 2, 1);
-//    Micronutrient micronutrient1(4, 5);
-//    Aliment aliment1("piept de pui", macronutrient1, micronutrient1);
-//    std::cout << aliment1;
-//    //std::cout << "Alimentul " << aliment1.get_denumire();
-//
-//    //std::cout << " contine la 100 de grame de produs: " << macronutrient1.get_proteina() << "g de proteine, ";
-//    //std::cout << macronutrient1.get_carbohidrat() << "g de carbohidrati, ";
-//    //std::cout << macronutrient1.get_grasime() << "g de grasimi, ";
-//    //std::cout << micronutrient1.get_vitamine() << " vitamine si ";
-//    //std::cout << micronutrient1.get_minerale() << " minerale";
-//    Macronutrient macronutrient2(1, 2, 3);
-//    Micronutrient micronutrient2(1, 2);
-//    Aliment aliment2("ceva", macronutrient2, micronutrient2);
-//    std::cout << aliment2;
-//    aliment2 = aliment1;
-//    std::cout << aliment2;
-//    //Macronutrient macronutrient2(macronutrient1);
-//    //Micronutrient micronutrient2(micronutrient1);
-//    //std::cout << aliment1;
-//    //std::cout << macronutrient1;
-//    //std::cout << micronutrient1;
-//    //std::cout << aliment2;
-//    //std::cout << macronutrient2;
-//    //std::cout << micronutrient2;
-//    Micronutrient *micro;
-//    for(int i = 0; i < 2; i++)
-//        std::cin >> micro[i];
-//    for(int i = 0; i < 2; i++)
-//        std::cout << micro[i];
-
+        std::cout << "Total Proteine: " << total_proteine << "g" << "\n";
+        std::cout << "Total Carbohidrati: " << total_carbohidrati << "g" << "\n";
+        std::cout << "Total Grasimi: " << total_grasimi << "g" << "\n";
+        std::cout << "Total Kcal: " << total_kcal << "kcal" << "\n";
 
         return 0;
     }
