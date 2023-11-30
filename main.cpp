@@ -79,11 +79,11 @@ public:
 class Jurnal {
     std::vector<Aliment> aliment;
     std::vector<float> gramaj;
-    float total_proteine = 0, total_carbohidrati = 0, total_grasimi = 0, total_kcal = 0;
+    double total_proteine = 0, total_carbohidrati = 0, total_grasimi = 0, total_kcal = 0;
     std::string data;
 public:
     Jurnal() = default;
-    void set_aliment(Aliment x) {aliment.push_back(x);}
+    void set_aliment(const Aliment& x) {aliment.push_back(x);}
     void set_gramaj(float x) {gramaj.push_back(x);}
     friend std::ostream &operator<<(std::ostream &out, const Jurnal &other) {
         out << "Total proteine: " << other.total_proteine << "\n";
@@ -118,12 +118,11 @@ int main() {
         float proteine, carbohidrati, grasimi;
         int vitamine, minerale;
         fin >> denumire >> proteine >> carbohidrati >> grasimi >> vitamine >> minerale;
-        DATABASE.push_back({denumire, {proteine, carbohidrati, grasimi}, {vitamine, minerale}});
+        DATABASE.emplace_back(denumire, Macronutrient{proteine, carbohidrati, grasimi}, Micronutrient{vitamine, minerale});
     }
 
     for(int i = 0; i < nr_alimente; i++)
        std::cout << DATABASE[i] << "\n";
-
     int nr_alimente_astazi;
     std::cin >> nr_alimente_astazi;
     for(int i = 0 ; i < nr_alimente_astazi; i++)
