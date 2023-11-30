@@ -1,4 +1,5 @@
 #include <iostream>
+#include <utility>
 #include <vector>
 #include <fstream>
 
@@ -50,7 +51,7 @@ class Aliment
     Micronutrient Micronutrienti;
     float Kcal;
 public:
-    Aliment(const std::string &denumire, Macronutrient macronutrient, Micronutrient micronutrient) : denumire(denumire), Macronutrienti(macronutrient), Micronutrienti(micronutrient) {
+    Aliment(std::string denumire, Macronutrient macronutrient, Micronutrient micronutrient) : denumire(std::move(denumire)), Macronutrienti(macronutrient), Micronutrienti(micronutrient) {
         Kcal =  Macronutrienti.get_proteina() * 4 + Macronutrienti.get_carbohidrat() * 4 + Macronutrienti.get_grasime() * 9;
     }
     Macronutrient get_macronutrient() const {return Macronutrienti;}
