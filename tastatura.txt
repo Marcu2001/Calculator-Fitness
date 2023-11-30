@@ -1,12 +1,12 @@
 11
-1.Ou 12.6 1.1 10.6 8 8
-2.Fulgi_de_Ovaz 12.0 62.0 5.70 5 6
-3.Migdale_Crude 24.7 4.7 53.3 7 9
-4.Piept_de_Pui 24 0.5 1.6 3 2
-5.Fructe_de_Padure_Congelate 0.9 7.1 0.2 5 6
-6.Bulgur 12.5 69.8 1.6 6 7
-7.Legume_Mexicane_Congelate 2.6 11.8 0.3 7 4
-8.Spaghete_Integrale 13 65 1.9 3 5
-9.Orez_Basmati 8.9 75 1.1 4 6
-10.Ananas 0.5 11.6 0.1 10 5
-11.Iaurt_Gregesc 6 4 2 6 4
+0.Ou 12.6 1.1 10.6 8 8
+1.Fulgi_de_Ovaz 12.0 62.0 5.70 5 6
+2.Migdale_Crude 24.7 4.7 53.3 7 9
+3.Piept_de_Pui 24 0.5 1.6 3 2
+4.Fructe_de_Padure_Congelate 0.9 7.1 0.2 5 6
+5.Bulgur 12.5 69.8 1.6 6 7
+6.Legume_Mexicane_Congelate 2.6 11.8 0.3 7 4
+7.Spaghete_Integrale 13 65 1.9 3 5
+8.Orez_Basmati 8.9 75 1.1 4 6
+9.Ananas 0.5 11.6 0.1 10 5
+10.Iaurt_Gregesc 6 4 2 6 4

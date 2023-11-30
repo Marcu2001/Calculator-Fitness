@@ -8,8 +8,6 @@ class Micronutrient
     int vitamine = 0;
     int minerale = 0;
 public:
-    int get_vitamine() const {return vitamine;}
-    int get_minerale() const {return minerale;}
     Micronutrient(int vitamine_, int minerale_){vitamine = vitamine_; minerale = minerale_;}
     friend std::ostream& operator<<(std::ostream &out,const Micronutrient& other)
     {
@@ -50,13 +48,10 @@ class Aliment
     std::string denumire;
     Macronutrient Macronutrienti;
     Micronutrient Micronutrienti;
-    float Kcal = Macronutrienti.get_proteina() * 4 + Macronutrienti.get_carbohidrat() * 4 + Macronutrienti.get_grasime() * 9;;
+    float Kcal = Macronutrienti.get_proteina() * 4 + Macronutrienti.get_carbohidrat() * 4 + Macronutrienti.get_grasime() * 9;
 public:
     Aliment(const std::string &denumire, Macronutrient macronutrient, Micronutrient micronutrient) : denumire(denumire), Macronutrienti(macronutrient), Micronutrienti(micronutrient) {}
-    std::string get_denumire() const {return denumire;}
     Macronutrient get_macronutrient() const {return Macronutrienti;}
-    Micronutrient get_micronutrient() const {return Micronutrienti;}
-    float get_Kcal() const {return Kcal;}
     Aliment(const Aliment& other) : denumire(other.denumire), Macronutrienti(other.Macronutrienti), Micronutrienti(other.Micronutrienti){}
     Aliment& operator=(const Aliment& other)
     {
@@ -80,17 +75,13 @@ public:
 
 class Jurnal {
     std::vector<Aliment> aliment;
-    std::vector<int> gramaj;
+    std::vector<float> gramaj;
     float total_proteine = 0, total_carbohidrati = 0, total_grasimi = 0, total_kcal = 0;
     std::string data;
 public:
-    //Jurnal();
-    //Jurnal(std::vector<Aliment> const &aliment, std::vector<int> gramaj) : aliment(aliment), gramaj(gramaj) {}
-    std::vector<int> get_gramaj() const { return gramaj; }
+    Jurnal() = default;
     void set_aliment(Aliment x) {aliment.push_back(x);}
-    void set_gramaj(int x) {gramaj.push_back(x);}
-    std::vector<Aliment> get_aliment() const { return aliment; }
-
+    void set_gramaj(float x) {gramaj.push_back(x);}
     friend std::ostream &operator<<(std::ostream &out, const Jurnal &other) {
         out << "Total proteine: " << other.total_proteine << "\n";
         out << "Total carbohidrati: " << other.total_carbohidrati << "\n";
@@ -99,9 +90,9 @@ public:
 
         return out;
     }
-    void Calculare_Macros()
+    void Calculare_Macros(int nr_alimente)
     {
-        for(int i = 0; i < aliment.size(); i++)
+        for(int i = 0; i < nr_alimente; i++)
         {
             total_proteine = total_proteine + aliment[i].get_macronutrient().get_proteina() * (gramaj[i] * 0.01);
             total_carbohidrati = total_carbohidrati + aliment[i].get_macronutrient().get_carbohidrat() * (gramaj[i] * 0.01);
@@ -140,7 +131,7 @@ int main() {
         Jurnal1.set_aliment(DATABASE[alege_aliment]);
         Jurnal1.set_gramaj(gramaj);
     }
-    Jurnal1.Calculare_Macros();
+    Jurnal1.Calculare_Macros(nr_alimente_astazi);
     std::cout << Jurnal1;
 
     return 0;
