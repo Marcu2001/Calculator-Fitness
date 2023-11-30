@@ -48,16 +48,19 @@ class Aliment
     std::string denumire;
     Macronutrient Macronutrienti;
     Micronutrient Micronutrienti;
-    float Kcal = Macronutrienti.get_proteina() * 4 + Macronutrienti.get_carbohidrat() * 4 + Macronutrienti.get_grasime() * 9;
+    float Kcal;
 public:
-    Aliment(const std::string &denumire, Macronutrient macronutrient, Micronutrient micronutrient) : denumire(denumire), Macronutrienti(macronutrient), Micronutrienti(micronutrient) {}
+    Aliment(const std::string &denumire, Macronutrient macronutrient, Micronutrient micronutrient) : denumire(denumire), Macronutrienti(macronutrient), Micronutrienti(micronutrient) {
+        Kcal =  Macronutrienti.get_proteina() * 4 + Macronutrienti.get_carbohidrat() * 4 + Macronutrienti.get_grasime() * 9;
+    }
     Macronutrient get_macronutrient() const {return Macronutrienti;}
-    Aliment(const Aliment& other) : denumire(other.denumire), Macronutrienti(other.Macronutrienti), Micronutrienti(other.Micronutrienti){}
+    Aliment(const Aliment& other) : denumire(other.denumire), Macronutrienti(other.Macronutrienti), Micronutrienti(other.Micronutrienti), Kcal(other.Kcal){}
     Aliment& operator=(const Aliment& other)
     {
         denumire = other.denumire;
         Macronutrienti = other.Macronutrienti;
         Micronutrienti = other.Micronutrienti;
+        Kcal = other.Kcal;
         return *this;
     }
     friend std::ostream& operator<<(std::ostream &out,const Aliment& other)
@@ -67,7 +70,7 @@ public:
     }
     friend std::istream& operator>>(std::istream &in, Aliment& other)
     {
-        in >> other.denumire >> other.Macronutrienti >> other.Micronutrienti;
+        in >> other.denumire >> other.Macronutrienti >> other.Micronutrienti >> other.Kcal;
         return in;
     }
     ~Aliment(){}
