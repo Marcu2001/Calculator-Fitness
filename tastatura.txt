@@ -10,3 +10,6 @@
 8.Orez_Basmati 8.9 75 1.1 4 6
 9.Ananas 0.5 11.6 0.1 10 5
 10.Iaurt_Gregesc 6 4 2 6 4
+2
+1 100
+2 200

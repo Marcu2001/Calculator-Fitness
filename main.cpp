@@ -125,12 +125,12 @@ int main() {
     for(int i = 0; i < nr_alimente; i++)
        std::cout << DATABASE[i] << "\n";
     int nr_alimente_astazi;
-    std::cin >> nr_alimente_astazi;
+    fin >> nr_alimente_astazi;
     for(int i = 0 ; i < nr_alimente_astazi; i++)
     {
         int alege_aliment;
         float gramaj;
-        std::cin >> alege_aliment >> gramaj;
+        fin >> alege_aliment >> gramaj;
         Jurnal1.set_aliment(DATABASE[alege_aliment]);
         Jurnal1.set_gramaj(gramaj);
     }
